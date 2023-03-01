@@ -27,6 +27,9 @@ export const routes = [
       const { title, description } = req.body;
       const datetime = new Date();
 
+      console.log(`req.body: ${req.body}`)
+
+
       const tasks = {
         id: randomUUID(),
         created_at: datetime,
