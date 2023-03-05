@@ -27,9 +27,6 @@ export const routes = [
       const { title, description } = req.body;
       const datetime = new Date();
 
-      console.log(`req.body: ${req.body}`)
-
-
       const tasks = {
         id: randomUUID(),
         created_at: datetime,
@@ -52,7 +49,6 @@ export const routes = [
       const { title, description } = req.body;
       const updated_at = new Date();
 
-      
       database.update("tasks", id, {
         updated_at,
         title,
@@ -69,7 +65,6 @@ export const routes = [
       const { id } = req.params;
       const completed_at = new Date();
 
-      
       database.update("tasks", id, {
         completed_at,
       });

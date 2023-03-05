@@ -8,6 +8,9 @@ This repository intend to serve as the solution of the Challenge purposed at Roc
 # With node>=18 and pnpm installed:
 pnpm i
 pnpm run dev
+
+# In another Terminal, please run from the top directory of yje project:
+node csv/parse-csv-to-api-stream.js
 ```
 
 
@@ -27,7 +30,7 @@ The API must contain the following functionalities:
 - [x] Updating a task by `id`;
 - [x] Remove a task by `id`;
 - [x] Mark by `id` a task completed;
-- [ ] And the real challenge: Importing tasks in bulk from a CSV file.
+- [x] And the real challenge: Importing tasks in bulk from a CSV file.
 
 
 
