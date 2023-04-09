@@ -11,7 +11,9 @@ This repository intend to serve as the solution of the Challenge purposed at Roc
 ## Quick Start
 
 ```bash
-# Instal the node_modules and run:
+# CLone this repository, install the node_modules and run:
+git clone https://github.com/rogeriocassares/rocketseat-ignite-nodejs-01-fundamentals-challenge.git
+cd rocketseat-ignite-nodejs-01-fundamentals-challenge.git
 pnpm i
 pnpm dev
 
