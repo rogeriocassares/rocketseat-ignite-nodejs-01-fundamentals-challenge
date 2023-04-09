@@ -10,44 +10,63 @@ This repository intend to serve as the solution of the Challenge purposed at Roc
 
 ## Quick Start
 
+Clone this repository:
 ```bash
-# Clone this repository, install the node_modules and run:
 git clone https://github.com/rogeriocassares/rocketseat-ignite-nodejs-01-fundamentals-challenge.git
 cd rocketseat-ignite-nodejs-01-fundamentals-challenge/
+```
+
+Install the required packages:
+```bash
 pnpm i
+```
+Run the server:
+```bash
 pnpm dev
+```
 
-# To populate the database using a csv streaming, in another Terminal, please run from the top directory of the Project:
+Populate the database using a `csv` streaming, in another Terminal, please run from the top directory of the Project:
+```bash
 node csv/parse-csv-to-api-stream.js
+```
 
-# To list all Tasks:
+List all `Tasks`:
+```bash
 http GET http://127.0.0.1:3333/tasks
+```
 
-# To create a new Task:
+Create a new `Task`:
+```bash
 http POST http://127.0.0.1:3333/tasks \
 title='Task 01' \
 description='First task of the day.'
+```
 
-# Use the ENV variable to manage the id:
+Use the `ENV` variable to manage the `id`:
+```bash
 export TASK_ID=<INSERT_THE_TASK_ID_HERE!>
+```
 
-# To update an existing Task by id:
+Update an existing `Task` by `id`:
+```bash
 http PUT http://127.0.0.1:3333/tasks/$TASK_ID \
 title='Task 01' \
 description='First task of the week!'
+```
 
-# To complete an existing Task by id:
+Complete an existing `Task` by `id`:
+```bash
 http PATCH http://127.0.0.1:3333/tasks/$TASK_ID/complete
+```
 
-# To delete an existing Task by id:
+Delete an existing `Task` by `id`:
+```bash
 http DELETE http://127.0.0.1:3333/tasks/$TASK_ID
 ```
 
 
 
 [TOC]
-
-
 
 ## 1. Target
 
