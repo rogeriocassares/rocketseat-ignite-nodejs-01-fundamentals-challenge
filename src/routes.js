@@ -24,38 +24,56 @@ export const routes = [
     method: "POST",
     path: buildRoutePath("/tasks"),
     handler: (req, res) => {
+      if (req.body == null) {
+        return res.writeHead(400).end("The body is not a valid JSON.");
+      }
       const { title, description } = req.body;
-      const datetime = new Date();
+      if (title && description) {
+        const datetime = new Date();
 
-      const tasks = {
-        id: randomUUID(),
-        created_at: datetime,
-        updated_at: null,
-        completed_at: null,
-        title,
-        description,
-      };
+        const tasks = {
+          id: randomUUID(),
+          created_at: datetime,
+          updated_at: null,
+          completed_at: null,
+          title,
+          description,
+        };
 
-      database.insert("tasks", tasks);
+        database.insert("tasks", tasks);
 
-      return res.writeHead(201).end();
+        return res.writeHead(201).end();
+      } else {
+        return res.writeHead(400).end("The 'title' and 'description' fields are mandatory!");
+      }
     },
   },
   {
     method: "PUT",
     path: buildRoutePath("/tasks/:id"),
     handler: (req, res) => {
-      const { id } = req.params;
+      if (req.body == null) {
+        return res.writeHead(400).end("The body is not a valid JSON.");
+      }
       const { title, description } = req.body;
-      const updated_at = new Date();
+      if (title && description) {
+        const { id } = req.params;
+        const updated_at = new Date();
 
-      database.update("tasks", id, {
-        updated_at,
-        title,
-        description,
-      });
+        let result = database.update("tasks", id, {
+          updated_at,
+          title,
+          description,
+        });
 
-      return res.writeHead(204).end();
+        if (result > -1) {
+          return res.writeHead(204).end();
+        } else {
+          return res.writeHead(404).end("The 'id' parameter was not found.");
+        }
+      } else {
+        return res.writeHead(400).end("The 'title' and 'description' fields are mandatory!");
+      }
     },
   },
   {
@@ -65,11 +83,15 @@ export const routes = [
       const { id } = req.params;
       const completed_at = new Date();
 
-      database.update("tasks", id, {
+      let result = database.update("tasks", id, {
         completed_at,
       });
 
-      return res.writeHead(204).end();
+      if (result > -1) {
+        return res.writeHead(204).end();
+      } else {
+        return res.writeHead(404).end("The 'id' parameter was not found.");
+      }
     },
   },
   {
@@ -78,9 +100,13 @@ export const routes = [
     handler: (req, res) => {
       const { id } = req.params;
 
-      database.delete("tasks", id);
+      let result = database.delete("tasks", id);
 
-      return res.writeHead(204).end();
+      if (result > -1) {
+        return res.writeHead(204).end();
+      } else {
+        return res.writeHead(404).end("The 'id' parameter was not found.");
+      }
     },
   },
 ];

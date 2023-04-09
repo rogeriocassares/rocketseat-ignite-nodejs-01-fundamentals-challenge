@@ -2,15 +2,36 @@
 
 This repository intend to serve as the solution of the Challenge purposed at Rocketseat's Nodejs Ignite Journey - Project 01 and it is strongly based on the [repository](https://github.com/rogeriocassares/rocketseat-ignite-nodejs-01-fundamentals) created for that class.
 
-## 0. Quick Start
+## Prerequisites
+
+- `node`: v18.14.0+
+- `pnpm`: 7.27.1+
+- `http pie:` 3.2.1+
+
+## Quick Start
 
 ```bash
-# With node>=18 and pnpm installed:
+# Instal the node_modules and run:
 pnpm i
-pnpm run dev
+pnpm dev
 
-# In another Terminal, please run from the top directory of yje project:
+# To update a csv using streaming, in another Terminal, please run from the top directory of yje project:
 node csv/parse-csv-to-api-stream.js
+
+# To list all Tasks:
+http GET http://127.0.0.1:3333/tasks
+
+# To create a new Task:
+http POST http://127.0.0.1:3333/tasks title='Task 01' description='First task of the day.'
+
+# To update an existing Task by id:
+http PUT http://127.0.0.1:3333/tasks/f3af3410-e808-46e1-9a0b-2baca69f1b96 title='Task 01' description='First task of the week!'
+
+# To complete an existing Task by id:
+http PATCH http://127.0.0.1:3333/tasks/f3af3410-e808-46e1-9a0b-2baca69f1b96/complete
+
+# To delete an existing Task by id:
+http DELETE http://127.0.0.1:3333/tasks/f3af3410-e808-46e1-9a0b-2baca69f1b96
 ```
 
 
@@ -115,15 +136,12 @@ Similarly done in the [`stream-http-server.js`](https://github.com/rogeriocassar
 
 Some suggestions:
 
-Validate if the properties `title` and `description` of the routes `POST` and `PUT` are presents in the `body` of the requisition.
+- [x] Validate if the properties `title` and `description` of the routes `POST` and `PUT` are presents in the `body` of the requisition;
 
-IN the routes that receives the `/:id`, in addition to validate if the `id` exists in the database, return the request with a informative message the the registry does not exists.
+- [x] In the routes that receives the `/:id`, in addition to validate if the `id` exists in the database, return the request with a informative message that the registry does not exists;
 
-Validate if req.body is a real JSON
+- [x] Validate if `req.body` is a real `JSON`;
 
-Do not accept the update if just one field is filled.
-
-Ensure fields of JSON are to lower_case.
 
 
 

@@ -6,8 +6,12 @@ export async function json(req, res) {
   }
 
   try {
-    req.body = JSON.parse(Buffer.concat(buffers).toString());
-  } catch {
+    let bufferString = Buffer.concat(buffers).toString();
+    req.body = JSON.parse(bufferString);
+  } catch (e) {
+    console.error(`error message: ${e.message}`);
     req.body = null;
   }
 }
+
+
