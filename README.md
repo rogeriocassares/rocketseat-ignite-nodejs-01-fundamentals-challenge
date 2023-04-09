@@ -29,7 +29,7 @@ title='Task 01' \
 description='First task of the day.'
 
 # Use the ENV variable to manage the id:
-export TASK_ID
+export TASK_ID=<INSERT_THE_TASK_ID_HERE!>
 
 # To update an existing Task by id:
 http PUT http://127.0.0.1:3333/tasks/$TASK_ID \
