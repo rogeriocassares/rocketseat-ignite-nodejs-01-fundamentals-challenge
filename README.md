@@ -15,7 +15,7 @@ This repository intend to serve as the solution of the Challenge purposed at Roc
 pnpm i
 pnpm dev
 
-# To update a csv using streaming, in another Terminal, please run from the top directory of yje project:
+# To update a csv using streaming, in another Terminal, please run from the top directory of the project:
 node csv/parse-csv-to-api-stream.js
 
 # To list all Tasks:
