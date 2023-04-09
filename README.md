@@ -17,23 +17,30 @@ cd rocketseat-ignite-nodejs-01-fundamentals-challenge/
 pnpm i
 pnpm dev
 
-# To update a csv using streaming, in another Terminal, please run from the top directory of the project:
+# To populate the database using a csv streaming, in another Terminal, please run from the top directory of the Project:
 node csv/parse-csv-to-api-stream.js
 
 # To list all Tasks:
 http GET http://127.0.0.1:3333/tasks
 
 # To create a new Task:
-http POST http://127.0.0.1:3333/tasks title='Task 01' description='First task of the day.'
+http POST http://127.0.0.1:3333/tasks \
+title='Task 01' \
+description='First task of the day.'
+
+# Use the ENV variable to manage the id:
+export TASK_ID
 
 # To update an existing Task by id:
-http PUT http://127.0.0.1:3333/tasks/f3af3410-e808-46e1-9a0b-2baca69f1b96 title='Task 01' description='First task of the week!'
+http PUT http://127.0.0.1:3333/tasks/$TASK_ID \
+title='Task 01' \
+description='First task of the week!'
 
 # To complete an existing Task by id:
-http PATCH http://127.0.0.1:3333/tasks/f3af3410-e808-46e1-9a0b-2baca69f1b96/complete
+http PATCH http://127.0.0.1:3333/tasks/$TASK_ID/complete
 
 # To delete an existing Task by id:
-http DELETE http://127.0.0.1:3333/tasks/f3af3410-e808-46e1-9a0b-2baca69f1b96
+http DELETE http://127.0.0.1:3333/tasks/$TASK_ID
 ```
 
 
